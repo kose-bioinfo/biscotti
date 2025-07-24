@@ -12,9 +12,10 @@ furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-If used in any study/publications please cite appropriately:
+If you use Msa2Blosum in your research, please cite it as follows:
 
-S.H.Kose (2025). MSA2BLOSUM (Version v1.4.2) [Software]. GitHub. https://github.com/skose82/MSA2BLOSUM
+S.H.Kose (2025). Msa2Blosum: Custom BLOSUM matrix generator from MSAs [Software]. GitHub repository. https://github.com/skose82/MSA2BLOSUM
+
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
