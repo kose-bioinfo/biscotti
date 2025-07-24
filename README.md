@@ -34,7 +34,7 @@ Input:
 
 alignment.fasta  
 
-file.clst (at chosen % identity for your MSA -- e.g. CD-HIT output.) 
+file.clstr (at chosen % identity for your MSA -- e.g. CD-HIT output.) 
 
 Output: 
 
