@@ -14,10 +14,11 @@ Pseudocount addition (default α=0.1) to avoid zero probabilities
 Easy command-line interface
 
 Installation
+
 You can install Msa2Blosum by cloning the GitHub repository:
 
-//git clone https://github.com/skose82/MSA2BLOSUM.git
-cd MSA2BLOSUM//
+'''git clone https://github.com/skose82/MSA2BLOSUM.git
+cd MSA2BLOSUM'''
 
 This package requires the following dependencies:
 
