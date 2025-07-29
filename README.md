@@ -1,4 +1,4 @@
-# Msa2Blosum
+# BISCOTTI
 
 Msa2Blosum is a tool to generate custom BLOSUM substitution matrices from large scale (>10,000 sequences) multiple sequence alignments (MSAs). 
 It applies Henikoff sequence weighting and pseudocount smoothing to produce robust and unbiased scoring matrices suitable for downstream bioinformatics analyses.
