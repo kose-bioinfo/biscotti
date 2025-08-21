@@ -1,10 +1,10 @@
 # BISCOTTI
 
 BLOSUM
-Individualized
+Individualised
 Substitution
 Calculator
-Optimizing
+Optimising
 Tailored
 Translation
 Indices
