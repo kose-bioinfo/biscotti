@@ -1,6 +1,5 @@
 # BISCOTTI
 
-BISCOTTI
 BLOSUM
 Individualized
 Substitution
