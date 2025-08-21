@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from collections import defaultdict
 from Bio import SeqIO
 import numpy as np
@@ -7,40 +8,42 @@ import multiprocessing as mp
 from tqdm import tqdm
 import time
 
+# =========================
+# Config
+# =========================
 AA_LIST = list("ACDEFGHIKLMNPQRSTVWY")
 AA_SET = set(AA_LIST)
 SCALE = 1
-PSEUDOCOUNT = 0.1          # small pseudocount to avoid zeros
-ADD_SINGLETONS = True     # set True to add MSA-only sequences as singleton clusters
+PSEUDOCOUNT = 0.1             # pseudocount to avoid zeros
+ADD_MSA_SINGLETONS = True    # True => add singleton clusters for base IDs not in .clstr
+NPROC_DEFAULT = 6
 
-# ---------------------------
-# .clstr parsing & sanitizing
-# ---------------------------
+# =========================
+# Parsing & loading
+# =========================
 
-def parse_cd_hit_clstr_first_id(file_path):
+def parse_cd_hit_clstr_first_id(file_path: str):
     """
     Parse CD-HIT .clstr:
-      - start new cluster at lines beginning with '>Cluster'
-      - on member lines, extract ONLY the first ID after the first '>'
-      - strip any trailing '...' (defensive)
-      - de-duplicate IDs within a cluster (order-preserving)
-    Returns: list[list[str]]
+      - start new cluster at '>Cluster'
+      - for member lines, take the first ID after the first '>'
+      - strip trailing '...' if present
+      - de-duplicate IDs within cluster
+    Returns: list[list[str]] of base IDs
     """
     clusters, cur = [], []
     with open(file_path, "r", encoding="utf-8") as f:
         for line in f:
             if line.startswith(">Cluster"):
                 if cur:
-                    # dedupe while preserving order
                     seen = set()
                     cur = [x for x in cur if not (x in seen or seen.add(x))]
                     clusters.append(cur)
                 cur = []
                 continue
             if ">" in line:
-                # take only the first ID token after first '>'
                 sid = line.split(">", 1)[1].split()[0].rstrip(",")
-                if sid.endswith("..."):  # defensive
+                if sid.endswith("..."):
                     sid = sid[:-3]
                 cur.append(sid)
     if cur:
@@ -49,25 +52,69 @@ def parse_cd_hit_clstr_first_id(file_path):
         clusters.append(cur)
     return clusters
 
-def load_msa(fasta_path):
-    # Biopython record.id is the first whitespace-delimited token (good for CD-HIT matching)
-    return {record.id: str(record.seq) for record in SeqIO.parse(fasta_path, "fasta")}
 
-def sanitize_clusters(clusters_raw, msa_keys):
+def load_msa_instances(fasta_path: str):
     """
-    Intersect cluster members with the MSA keys and drop empty clusters.
-    Ensures cluster sizes never exceed the MSA size and removes stray IDs.
+    Load EVERY FASTA record (each '>' line).
+    Assigns unique keys for duplicate base IDs (e.g. ID, ID_1, ID_2).
+    Returns:
+      seq_by_key: dict {unique_key -> sequence}
+      id_to_keys: dict {base_id    -> [unique_key1, unique_key2, ...]}
     """
-    clean = []
-    for cl in clusters_raw:
-        members = [sid for sid in cl if sid in msa_keys]
+    seq_by_key = {}
+    id_to_keys = defaultdict(list)
+    seen = defaultdict(int)
+
+    for rec in SeqIO.parse(fasta_path, "fasta"):
+        base = rec.id
+        if base in id_to_keys:
+            seen[base] += 1
+            ukey = f"{base}_{seen[base]}"
+        else:
+            ukey = base
+        seq_by_key[ukey] = str(rec.seq)
+        id_to_keys[base].append(ukey)
+
+    return seq_by_key, id_to_keys
+
+
+def expand_clusters_with_instances(clusters_base_ids, id_to_keys, msa_keys_set=None):
+    """
+    Expand clusters (base IDs) to include ALL duplicate instances (unique keys).
+    """
+    expanded = []
+    for cl in clusters_base_ids:
+        members = []
+        for base in cl:
+            for ukey in id_to_keys.get(base, []):
+                if msa_keys_set is None or ukey in msa_keys_set:
+                    members.append(ukey)
+        seen = set()
+        members = [x for x in members if not (x in seen or seen.add(x))]
         if members:
-            clean.append(members)
-    return clean
+            expanded.append(members)
+    return expanded
 
-# ---------------------------
-# Henikoff weighting & counts
-# ---------------------------
+
+def add_missing_as_singletons(expanded_clusters, seq_by_key, id_to_keys, clusters_base_ids):
+    """
+    Add singleton clusters for base IDs present in MSA but not in clusters.
+    """
+    clustered_bases = set(b for cl in clusters_base_ids for b in cl)
+    all_bases = set(id_to_keys.keys())
+    missing_bases = sorted(all_bases - clustered_bases)
+    if not missing_bases:
+        return expanded_clusters, 0
+
+    for base in missing_bases:
+        for ukey in id_to_keys[base]:
+            if ukey in seq_by_key:
+                expanded_clusters.append([ukey])
+    return expanded_clusters, sum(len(id_to_keys[b]) for b in missing_bases)
+
+# =========================
+# Henikoff weights & counts
+# =========================
 
 def henikoff_weights(seqs):
     n = len(seqs)
@@ -84,63 +131,51 @@ def henikoff_weights(seqs):
         r = len(set(valid_aa))
         unique, counts = np.unique(valid_aa, return_counts=True)
         counts_dict = dict(zip(unique, counts))
-
         for i in range(n):
             aa = col[i]
             if aa in counts_dict:
-                # Henikoff position weight contribution
                 weights[i] += 1.0 / (r * counts_dict[aa])
 
-    total_weight = np.sum(weights)
-    return weights / total_weight if total_weight > 0 else weights
+    tot = np.sum(weights)
+    return weights / tot if tot > 0 else weights
+
 
 def count_pairs_in_cluster(args):
-    cluster, msa_dict = args
+    cluster_keys, seq_by_key = args
     start = time.time()
-
-    # Pull sequences for members present in MSA (cluster already sanitized, but keep defensive)
-    seqs = [msa_dict[sid] for sid in cluster if sid in msa_dict]
+    seqs = [seq_by_key[k] for k in cluster_keys if k in seq_by_key]
     if len(seqs) < 2:
-        # too small to contribute pairs
         return defaultdict(float)
-    # require consistent lengths
     L = len(seqs[0])
     if any(len(s) != L for s in seqs):
-        # skip inconsistent clusters
         return defaultdict(float)
 
     weights = henikoff_weights(seqs)
     arr = np.array([list(seq) for seq in seqs])
-
     pair_counts = defaultdict(float)
 
-    # per-column weighted AA co-occurrence (ignore gaps / non-AA)
     for pos in range(L):
         col = arr[:, pos]
         valid_idx = np.where(np.isin(col, list(AA_SET)))[0]
         if len(valid_idx) < 2:
             continue
-
         valid_aa = col[valid_idx]
-        valid_w  = weights[valid_idx]
+        valid_w = weights[valid_idx]
 
-        # aggregate weights by residue at this column
         aa_weight_sum = defaultdict(float)
         for aa, w in zip(valid_aa, valid_w):
             aa_weight_sum[aa] += w
 
-        aa_items = sorted(aa_weight_sum.items())  # sort for deterministic ordering
-
-        # add diagonal and off-diagonal contributions; keep pair keys sorted
+        aa_items = sorted(aa_weight_sum.items())
         for i, (aa1, w1) in enumerate(aa_items):
             pair_counts[(aa1, aa1)] += w1 * w1
             for j in range(i + 1, len(aa_items)):
                 aa2, w2 = aa_items[j]
                 pair_counts[(aa1, aa2)] += 2.0 * w1 * w2
 
-    duration = time.time() - start
-    print(f"Processed cluster size {len(cluster)} in {duration:.2f} seconds")
+    print(f"Processed cluster size {len(cluster_keys)} in {time.time() - start:.2f} seconds")
     return pair_counts
+
 
 def aggregate_pair_counts(pair_counts_list):
     total = defaultdict(float)
@@ -149,16 +184,15 @@ def aggregate_pair_counts(pair_counts_list):
             total[k] += v
     return total
 
-# ---------------------------
+# =========================
 # Log-odds matrix
-# ---------------------------
+# =========================
 
 def compute_log_odds_matrix(pair_counts):
     total_pairs = sum(pair_counts.values())
     if total_pairs == 0:
-        raise ValueError("No pairs counted. Check your input data (ID matching, cluster parsing).")
+        raise ValueError("No pairs counted. Check input data.")
 
-    # background AA counts from pair counts (symmetric)
     aa_counts = defaultdict(float)
     for (a1, a2), count in pair_counts.items():
         if a1 == a2:
@@ -168,93 +202,75 @@ def compute_log_odds_matrix(pair_counts):
             aa_counts[a2] += count
     total_aa = sum(aa_counts.values())
 
-    # pseudocounts on single-AA background
     for aa in AA_LIST:
         aa_counts[aa] += PSEUDOCOUNT
     total_aa += PSEUDOCOUNT * len(AA_LIST)
-
     aa_freq = {aa: aa_counts[aa] / total_aa for aa in AA_LIST}
 
-    # pseudocounts on pair space
     n_pairs_possible = (len(AA_LIST) * (len(AA_LIST) + 1)) // 2
     adjusted_total_pairs = total_pairs + PSEUDOCOUNT * n_pairs_possible
 
     matrix = pd.DataFrame(index=AA_LIST, columns=AA_LIST, dtype=int)
-
     for a1 in AA_LIST:
         for a2 in AA_LIST:
             pair = tuple(sorted((a1, a2)))
             obs_count = pair_counts.get(pair, 0.0) + PSEUDOCOUNT
             obs_freq = obs_count / adjusted_total_pairs
-
-            # expected under independence; off-diagonal has factor 2
             if a1 == a2:
                 exp_freq = aa_freq[a1] ** 2
             else:
                 exp_freq = 2.0 * aa_freq[a1] * aa_freq[a2]
-
             score = math.log2(obs_freq / exp_freq) if (exp_freq > 0 and obs_freq > 0) else -10.0
             lod = int(round(SCALE * score))
             matrix.at[a1, a2] = matrix.at[a2, a1] = lod
-
     return matrix
 
-# ---------------------------
+# =========================
 # Parallel build
-# ---------------------------
+# =========================
 
-def build_blosum_parallel(msa_dict, clusters, nproc=8):
-    # intersect clusters with MSA keys (safety)
-    msa_keys = set(msa_dict.keys())
-    clusters = sanitize_clusters(clusters, msa_keys)
-
-    # optional: add singleton clusters for any MSA sequences not covered
-    if ADD_SINGLETONS:
-        covered = {sid for cl in clusters for sid in cl}
-        missing = sorted(msa_keys - covered)
-        clusters += [[sid] for sid in missing]
-
+def build_blosum_parallel(seq_by_key, clusters_keys, nproc=NPROC_DEFAULT):
     pair_counts_list = []
     with mp.Pool(nproc) as pool:
-        iterable = [(cluster, msa_dict) for cluster in clusters]
+        iterable = [(cluster, seq_by_key) for cluster in clusters_keys]
         for result in tqdm(pool.imap_unordered(count_pairs_in_cluster, iterable, chunksize=1),
-                           total=len(clusters), desc="Clusters processed"):
+                           total=len(clusters_keys), desc="Clusters processed"):
             pair_counts_list.append(result)
     pair_counts = aggregate_pair_counts(pair_counts_list)
     return compute_log_odds_matrix(pair_counts)
 
-# ---------------------------
-# Run
-# ---------------------------
+# =========================
+# Main
+# =========================
 
 if __name__ == "__main__":
     msa_file = "RSV_B.fasta"
     clstr_file = "clustered_RSVB90_remade.fasta.clstr"
-    output_file = "RSVB_F_blosum_90_Sc1_pseudo0.1_singltons_v7.csv"
-    nproc = 6  # Adjust for your CPU
+    output_file = "RSVB_F_blosum_90_v7.1_allinstances.csv"
+    nproc = NPROC_DEFAULT
 
-    print("Loading MSA...")
-    msa = load_msa(msa_file)
-    print(f"Loaded {len(msa)} sequences (unique first-token IDs)")
+    print("Loading MSA (ALL instances)...")
+    seq_by_key, id_to_keys = load_msa_instances(msa_file)
+    print(f"Loaded {len(seq_by_key)} records (every '>' entry). "
+          f"Unique base IDs: {len(id_to_keys)}")
 
     print("Loading clusters...")
-    clusters_raw = parse_cd_hit_clstr_first_id(clstr_file)
-    msa_keys = set(msa.keys())
+    clusters_base = parse_cd_hit_clstr_first_id(clstr_file)
+    print(f"Loaded {len(clusters_base)} clusters (base IDs)")
 
-    # sanitize + report coverage
-    clusters = sanitize_clusters(clusters_raw, msa_keys)
-    covered = len({sid for cl in clusters for sid in cl})
-    missing = len(msa_keys - {sid for cl in clusters for sid in cl})
-    print(f"Loaded {len(clusters)} clusters covering {covered} of {len(msa)} MSA sequences "
-          f"({missing} not in clusters)")
-    print("Cluster sizes (sanitized):", [len(c) for c in clusters])
+    clusters_keys = expand_clusters_with_instances(clusters_base, id_to_keys, msa_keys_set=set(seq_by_key.keys()))
+    if ADD_MSA_SINGLETONS:
+        clusters_keys, added = add_missing_as_singletons(clusters_keys, seq_by_key, id_to_keys, clusters_base)
+        if added:
+            print(f"Added {added} singleton records for base IDs missing from clusters.")
 
-    if ADD_SINGLETONS and missing:
-        print(f"Added {missing} singleton clusters (full coverage).")
+    covered_keys = len({k for cl in clusters_keys for k in cl})
+    print(f"Clusters ready: {len(clusters_keys)} | Coverage: {covered_keys} / {len(seq_by_key)} records")
+    print("Cluster sizes (first 10):", [len(c) for c in clusters_keys[:10]])
 
-    print("Computing matrix (parallel with progress)...")
+    print("Computing matrix...")
     start = time.time()
-    matrix = build_blosum_parallel(msa, clusters, nproc=nproc)
+    matrix = build_blosum_parallel(seq_by_key, clusters_keys, nproc=nproc)
     print(f"Done in {time.time() - start:.2f} seconds")
 
     matrix.to_csv(output_file)
