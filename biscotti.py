@@ -251,7 +251,7 @@ if __name__ == "__main__":
 
     print("Loading MSA (ALL instances)...")
     seq_by_key, id_to_keys = load_msa_instances(msa_file)
-    print(f"Loaded {len(seq_by_key)} records (every '>' entry). "
+    print(f"Loaded {len(seq_by_key)} records. "
           f"Unique base IDs: {len(id_to_keys)}")
 
     print("Loading clusters...")
