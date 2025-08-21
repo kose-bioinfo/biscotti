@@ -29,12 +29,19 @@ QC Filter and align your sequences (e.g with mafft)
 
 Cluster your FASTA sequences with CD-HIT (e.g., 90% identity for highly conserved proteins):
 
+
+```
 cd-hit -i RSV_A.fasta -o clustered_RSVA90.fasta -c 0.90 -n 5 -d 0
 
+```
 
 Run the script:
 
+
+```
 python3 biscotti.py
+
+```
 
 
 Output:
@@ -43,6 +50,7 @@ RSVA_F_blosum_90.csv — custom 20×20 substitution matrix.
 
 # Algorithm/rationale
 
+```
 1. Henikoff weighting
 
 For each sequence i, weight is computed across alignment positions:
@@ -80,7 +88,6 @@ From symmetric pair counts:
 
 A[a] = 2*C[a,a] + Σ_{b != a} C[a,b]
 
-
 Normalise:
 
 P_obs(a) = A[a] / Σ_z A[z]
@@ -101,12 +108,13 @@ Step 6: Log-odds substitution scores
 S(a,b) = log2( P_obs(a,b) / P_exp(a,b) )
 LOD(a,b) = round( SCALE * S(a,b) )
 
-
 Scores are symmetric (S(a,b) = S(b,a)).
 
+```
 Pseudocounts (α = 0.1) are added to avoid zero probabilities.
 
 Final result is a 20×20 CSV matrix (rows and columns in amino acid order).
+
 
 
 # References
