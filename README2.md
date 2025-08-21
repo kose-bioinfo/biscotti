@@ -1,5 +1,6 @@
 # BISCOTTI: 
-![images](https://github.com/user-attachments/assets/eda43a71-7676-4162-bd54-f60423963bde)
+![download](https://github.com/user-attachments/assets/422eed91-22be-45d6-a663-5637743e949a)
+
 
 BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation Indices
 
