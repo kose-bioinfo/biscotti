@@ -1,4 +1,4 @@
-BISCOTTI: 
+# BISCOTTI: 
 
 BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation Indices
 
@@ -7,7 +7,7 @@ Crunching alignments into your perfect BLOSUM
 BISCOTTI is a Python tool for building custom substitution matrices from multiple sequence alignments (MSAs). It is custom made for highly conserved viral proteins such as RSV F, but can be applied to any protein alignment.
 
 
-Features
+# Features
 
 Loads large MSAs (10k+ sequences).
 
@@ -23,7 +23,7 @@ Computes log-odds substitution scores (BLOSUM style).
 
 Outputs a symmetric 20×20 substitution matrix in CSV.
 
-Usage
+# Usage
 
 QC Filter and align your sequences (e.g with mafft) 
 
@@ -41,7 +41,7 @@ Output:
 
 RSVA_F_blosum_90.csv — custom 20×20 substitution matrix.
 
-Algorithm
+# Algorithm/rationale
 
 1. Henikoff weighting
 
@@ -54,7 +54,7 @@ r_p = number of unique residues at position p
 
 n_ap = count of amino acid a at position p
 
-Normalize weights:
+Normalise weights:
 
 w_i = w_i / Σ_i w_i
 
@@ -109,7 +109,7 @@ Pseudocounts (α = 0.1) are added to avoid zero probabilities.
 Final result is a 20×20 CSV matrix (rows and columns in amino acid order).
 
 
-References
+# References
 
 Henikoff, S., & Henikoff, J. G. (1992). Amino acid substitution matrices from protein blocks. PNAS, 89(22), 10915–10919. PMID: 1438297
 
