@@ -4,7 +4,7 @@ BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation
 
 Crunching alignments into your perfect BLOSUM
 
-BISCOTTI is a Python tool for building custom substitution matrices from multiple sequence alignments (MSAs).
+BISCOTTI is a Python tool for building custom substitution matrices from multiple sequence alignments (MSAs). It is custom made for highly conserved viral proteins such as RSV F, but can be applied to any protein alignment.
 
 
 Features
@@ -25,14 +25,16 @@ Outputs a symmetric 20×20 substitution matrix in CSV.
 
 Usage
 
-Cluster your FASTA sequences with CD-HIT (e.g., 90% identity):
+QC Filter and align your sequences (e.g with mafft) 
+
+Cluster your FASTA sequences with CD-HIT (e.g., 90% identity for highly conserved proteins):
 
 cd-hit -i RSV_A.fasta -o clustered_RSVA90.fasta -c 0.90 -n 5 -d 0
 
 
 Run the script:
 
-python build_matrix.py
+python3 biscotti.py
 
 
 Output:
@@ -40,7 +42,8 @@ Output:
 RSVA_F_blosum_90.csv — custom 20×20 substitution matrix.
 
 Algorithm
-Step 1: Henikoff weighting
+
+1. Henikoff weighting
 
 For each sequence i, weight is computed across alignment positions:
 
@@ -55,7 +58,7 @@ Normalize weights:
 
 w_i = w_i / Σ_i w_i
 
-Step 2: Weighted pair counting (per cluster)
+2. Weighted pair counting (per cluster)
 
 For each cluster:
 
@@ -68,21 +71,21 @@ Count all unique residue pairs (aa1, aa2):
 C(aa1, aa2) += 2 * w1 * w2    if aa1 != aa2
 C(aa, aa)   += w^2            for aa == aa
 
-Step 3: Combine clusters
+3: Combine clusters
 C_total(aa1, aa2) = Σ_clusters C_cluster(aa1, aa2)
 
-Step 4: Background frequencies
+4: Background frequencies
 
 From symmetric pair counts:
 
 A[a] = 2*C[a,a] + Σ_{b != a} C[a,b]
 
 
-Normalize:
+Normalise:
 
 P_obs(a) = A[a] / Σ_z A[z]
 
-Step 5: Observed vs expected pair probabilities
+5: Observed vs expected pair probabilities
 
 Observed pair probabilities:
 
@@ -106,7 +109,7 @@ Pseudocounts (α = 0.1) are added to avoid zero probabilities.
 Final result is a 20×20 CSV matrix (rows and columns in amino acid order).
 
 
-📚 References
+References
 
 Henikoff, S., & Henikoff, J. G. (1992). Amino acid substitution matrices from protein blocks. PNAS, 89(22), 10915–10919. PMID: 1438297
 
