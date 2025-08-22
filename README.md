@@ -124,6 +124,8 @@ Final result is a 20×20 CSV matrix (rows and columns in amino acid order).
 
 # References
 
+[Paper] 
+
 Henikoff, S., & Henikoff, J. G. (1992). Amino acid substitution matrices from protein blocks. PNAS, 89(22), 10915–10919. PMID: 1438297
 
 Li, W., & Godzik, A. (2006). Cd-hit: a fast program for clustering and comparing large sets of protein or nucleotide sequences. Bioinformatics, 22(13), 1658–1659.
