@@ -1,6 +1,7 @@
-# BISCOTTI: Crunching alignments into your perfect BLOSUM
-![download](https://github.com/user-attachments/assets/422eed91-22be-45d6-a663-5637743e949a)
 
+<img width="517" height="586" alt="Biscotti" src="https://github.com/user-attachments/assets/914960ef-f3f4-47d6-9800-ddf0195bd418" />
+
+# BISCOTTI: Crunching alignments into your perfect BLOSUM
 
 BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation Indices
 
