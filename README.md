@@ -1,7 +1,7 @@
 
 
 
-<img width="254" height="287" alt="image" src="https://github.com/user-attachments/assets/3f0993dc-54ec-4301-bf27-fa961159cf13" /> 
+<img width="50" height="100" alt="image" src="https://github.com/user-attachments/assets/3f0993dc-54ec-4301-bf27-fa961159cf13" /> 
 
 # BISCOTTI: Crunching alignments into your perfect BLOSUM
 
