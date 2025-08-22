@@ -1,9 +1,9 @@
 
 
-<img width="50" height="100" alt="image" src="https://github.com/user-attachments/assets/3f0993dc-54ec-4301-bf27-fa961159cf13" /> 
+
 # BISCOTTI: Crunching alignments into your perfect BLOSUM
 
-BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation Indices
+<img width="50" height="100" alt="image" src="https://github.com/user-attachments/assets/3f0993dc-54ec-4301-bf27-fa961159cf13" /> BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation Indices
 
 
 
