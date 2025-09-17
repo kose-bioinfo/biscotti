@@ -1,10 +1,6 @@
 # BISCOTTI: BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation Indices
 
-<img width="50" height="100" alt="image" src="https://github.com/user-attachments/assets/3f0993dc-54ec-4301-bf27-fa961159cf13" /> 
-
-Crunching alignments into your perfect BLOSUM
-
-<p align="center">
+<p align="left">
   <!-- Release version badge -->
   <img src="https://img.shields.io/badge/release-v1.4.0-blue?style=flat-square" alt="Release v1.4.0">
   <!-- Development language badge -->
@@ -14,6 +10,11 @@ Crunching alignments into your perfect BLOSUM
   <!-- Code style: black badge -->
   <img src="https://img.shields.io/badge/code%20style-black-black?style=flat-square" alt="Code style: black">
 </p>
+
+<img width="50" height="100" alt="image" src="https://github.com/user-attachments/assets/3f0993dc-54ec-4301-bf27-fa961159cf13" /> 
+
+Crunching alignments into your perfect BLOSUM
+
 
 BISCOTTI is a Python tool for building custom substitution matrices from multiple sequence alignments (MSAs). It is custom made for highly conserved viral proteins such as RSV F, but can be applied to any protein alignment.
 
