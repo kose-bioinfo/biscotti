@@ -1,4 +1,4 @@
-<img src="https://github.com/user-attachments/assets/3f0993dc-54ec-4301-bf27-fa961159cf13" alt="BISCOTTI logo" width="50" height="100" align="left" />
+<img src="https://github.com/user-attachments/assets/3f0993dc-54ec-4301-bf27-fa961159cf13" alt="BISCOTTI logo" width="50" height="50" align="left" />
 
 # BISCOTTI
 
