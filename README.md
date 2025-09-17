@@ -1,4 +1,12 @@
-# BISCOTTI: Crunching alignments into your perfect BLOSUM 
+<table align="center">
+  <tr>
+    <td align="center" style="border:1px solid #eee; padding:20px;">
+      <img width="50" height="100" alt="BISCOTTI logo" src="https://github.com/user-attachments/assets/3f0993dc-54ec-4301-bf27-fa961159cf13" />
+      <h1>BISCOTTI</h1>
+      <em>Crunching alignments into your perfect BLOSUM</em>
+    </td>
+  </tr>
+</table>
 
 <p align="left">
   <!-- Release version badge -->
@@ -11,13 +19,7 @@
   <img src="https://img.shields.io/badge/code%20style-black-black?style=flat-square" alt="Code style: black">
 </p>
 
-<img width="50" height="100" alt="image" src="https://github.com/user-attachments/assets/3f0993dc-54ec-4301-bf27-fa961159cf13" /> 
-
-
-
-
-BISCOTTI or BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation Indices is a Python tool for building custom substitution matrices from multiple sequence alignments (MSAs). It is custom made for highly conserved viral proteins such as RSV F, but can be applied to any protein alignment.
-
+BISCOTTI or BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation Indices is a Python tool for building custom substitution matrices from multiple sequence alignments (MSAs)[...]
 
 # Features
 
@@ -41,20 +43,15 @@ QC Filter and align your sequences (e.g with mafft)
 
 Cluster your FASTA sequences with CD-HIT (e.g., 90% identity for highly conserved proteins):
 
-
 ```
 cd-hit -i RSV_A.fasta -o clustered_RSVA90.fasta -c 0.90 -n 5 -d 0
-
 ```
 
 Run the script:
 
-
 ```
 python3 biscotti.py
-
 ```
-
 
 Output:
 
@@ -68,7 +65,6 @@ RSVA_F_blosum_90.csv — custom 20×20 substitution matrix.
 For each sequence i, weight is computed across alignment positions:
 
 w_i = Σ_p ( 1 / ( r_p * n_ap ) )
-
 
 r_p = number of unique residues at position p
 
@@ -110,7 +106,6 @@ Observed pair probabilities:
 
 P_obs(a,b) = C_total(a,b) / Σ_{x<=y} C_total(x,y)
 
-
 Expected probabilities under independence:
 
 P_exp(a,b) = P_obs(a)^2                if a == b
@@ -121,13 +116,10 @@ S(a,b) = log2( P_obs(a,b) / P_exp(a,b) )
 LOD(a,b) = round( SCALE * S(a,b) )
 
 Scores are symmetric (S(a,b) = S(b,a)).
-
 ```
 Pseudocounts (α = 0.1) are added to avoid zero probabilities.
 
 Final result is a 20×20 CSV matrix (rows and columns in amino acid order).
-
-
 
 # References
 
