@@ -1,4 +1,13 @@
-
+<p align="center">
+  <!-- Release version badge -->
+  <img src="https://img.shields.io/badge/release-v1.4.0-blue?style=flat-square" alt="Release v1.4.0">
+  <!-- Development language badge -->
+  <img src="https://img.shields.io/badge/language-python-yellow?style=flat-square" alt="Language: Python">
+  <!-- MIT License badge -->
+  <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License: MIT">
+  <!-- Code style: black badge -->
+  <img src="https://img.shields.io/badge/code%20style-black-black?style=flat-square" alt="Code style: black">
+</p>
 
 
 # BISCOTTI
