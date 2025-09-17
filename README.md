@@ -1,4 +1,4 @@
-<table align="left">
+<table align="center">
   <tr>
     <td align="center" style="border:1px solid #eee; padding:20px;">
       <img width="50" height="100" alt="BISCOTTI logo" src="https://github.com/user-attachments/assets/3f0993dc-54ec-4301-bf27-fa961159cf13" />
