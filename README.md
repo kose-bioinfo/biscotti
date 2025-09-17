@@ -1,12 +1,8 @@
-<table align="center">
-  <tr>
-    <td align="center" style="border:1px solid #eee; padding:20px;">
-      <img width="50" height="100" alt="BISCOTTI logo" src="https://github.com/user-attachments/assets/3f0993dc-54ec-4301-bf27-fa961159cf13" />
-      <h1>BISCOTTI</h1>
-      <em>Crunching alignments into your perfect BLOSUM</em>
-    </td>
-  </tr>
-</table>
+<img src="https://github.com/user-attachments/assets/3f0993dc-54ec-4301-bf27-fa961159cf13" alt="BISCOTTI logo" width="50" height="100" align="left" />
+
+# BISCOTTI
+
+_Crunching alignments into your perfect BLOSUM_
 
 <p align="left">
   <!-- Release version badge -->
@@ -19,8 +15,9 @@
   <img src="https://img.shields.io/badge/code%20style-black-black?style=flat-square" alt="Code style: black">
 </p>
 
-BISCOTTI or BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation Indices is a Python tool for building custom substitution matrices from multiple sequence alignments (MSAs)[...]
+BISCOTTI or BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation Indices is a Python tool for building custom substitution matrices from multiple sequence alignments (MSAs).
 
+...
 # Features
 
 Loads large MSAs (10k+ sequences).
