@@ -42,33 +42,27 @@ BISCOTTI implements:
 ## Usage
 
 ### QC and Align Sequences
-Filter and align your sequences using a tool like MAFFT.
+Filter and align your sequences using a tool like MAFFT or CLUSTAL W.
 
 ### Cluster Sequences
 Cluster your FASTA sequences using CD-HIT. For highly conserved proteins, use ~90% identity cutoff:
 
-```bash
-cd-hit -i RSV_A.fasta -o clustered_RSVA90.fasta -c 0.90 -n 5 -d 0
-bash```
-## Usage
+
+`cd-hit -i RSV_A.fasta -o clustered_RSVA90.fasta -c 0.90 -n 5 -d 0`
 
 
 Run BISCOTTI
-```bash
 
-python3 biscotti.py --msa_file MSA_FILE --clstr_file CLSTR_FILE --output_file OUTPUT_FILE --nproc 1-10
+`python3 biscotti.py --msa_file MSA_FILE --clstr_file CLSTR_FILE --output_file OUTPUT_FILE --nproc 1-10`
 
-bash```
-
-Output:
+## Output:
 
 foo.csv — your custom 20×20 substitution matrix.
 
 ## Rationale
 
-
 Biscotti takes aligned sequences, applies **Henikoff weighting** to correct for overrepresentation, counts weighted amino acid pairs, and computes **log-odds substitution scores** with pseudocounts. The output is a robust substitution matrix suitable for downstream bioinformatics analyses.
-
+please see docs above for details. 
 
 
 ## Associated Publication
