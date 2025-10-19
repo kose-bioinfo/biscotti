@@ -49,7 +49,7 @@ Cluster your FASTA sequences using CD-HIT. For highly conserved proteins, use ~9
 
 ```bash
 cd-hit -i RSV_A.fasta -o clustered_RSVA90.fasta -c 0.90 -n 5 -d 0
-```bash
+bash```
 ## Usage
 
 
@@ -58,7 +58,7 @@ Run BISCOTTI
 
 python3 biscotti.py --msa_file MSA_FILE --clstr_file CLSTR_FILE --output_file OUTPUT_FILE --nproc 1-10
 
-```bash
+bash```
 
 Output:
 
