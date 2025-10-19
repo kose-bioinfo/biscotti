@@ -14,12 +14,19 @@
 
 BISCOTTI is a high-performance Python tool for generating custom substitution matrices from large-scale multiple sequence alignments (>30k sequences). This tool was developed by S.H.Kose in collaboration with the Tregoning Lab @ Imperial College London. It features redundancy reduction, Henikoff weighting, and BLOSUM-style log-odds scoring.  
 
+## Overview
 
+BISCOTTI implements:
+
+- Redundancy reduction via CD-HIT clustering  
+- Henikoff sequence weighting within clusters  
+- Weighted amino acid pair counting  
+- Computation of log-odds substitution scores (BLOSUM-style)  
+- Output of symmetric 20×20 substitution matrices in CSV format  
 ---
 
 ## Documentation
 
-### Rationale
 
 BISCOTTI adapts the widely used Henikoff method for constructing BLOSUM-like matrices by incorporating weighted sequence contributions and custom scoring options. While Henikoff's original approach laid the foundation for position-specific residue weighting, this implementation extends it to handle large datasets efficiently and allows users to customize the scoring scheme, making it more flexible for diverse protein families.
 
@@ -31,17 +38,6 @@ This page provides a complete explanation of the equations and their derivations
 
 ---
 
-## Overview
-
-BISCOTTI implements:
-
-- Redundancy reduction via CD-HIT clustering  
-- Henikoff sequence weighting within clusters  
-- Weighted amino acid pair counting  
-- Computation of log-odds substitution scores (BLOSUM-style)  
-- Output of symmetric 20×20 substitution matrices in CSV format  
-
----
 
 ## Usage
 
