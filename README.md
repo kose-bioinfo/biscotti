@@ -1,4 +1,3 @@
-<img src="https://github.com/user-attachments/assets/b33c76f0-0ae7-41b0-aaf4-2ffb58b28be1" alt="italian-cantuccini-biscotti-stacked" width="120">
 
 # BISCOTTI — Crunching Alignments into Perfect BLOSUM Matrices
 
@@ -12,7 +11,13 @@
   </a>
 </p>
 
-BISCOTTI is a high-performance Python tool for generating custom substitution matrices from large-scale multiple sequence alignments (>30k sequences). This tool was developed by S.H.Kose in collaboration with the Tregoning Lab @ Imperial College London. It features redundancy reduction, Henikoff weighting, and BLOSUM-style log-odds scoring.  
+
+<p float="left">
+  <img src="https://github.com/user-attachments/assets/b33c76f0-0ae7-41b0-aaf4-2ffb58b28be1" alt="italian-cantuccini-biscotti-stacked" width="50" style="float:left; margin-right:15px;">
+  <span>
+    <strong>BISCOTTI</strong> is a high-performance Python tool for generating custom substitution matrices from large-scale multiple sequence alignments (&gt;30k sequences). This tool was developed by S.H. Kose in collaboration with the Tregoning Lab @ Imperial College London. It features redundancy reduction, Henikoff weighting, and BLOSUM-style log-odds scoring.
+  </span>
+</p>
 
 ## Overview
 
