@@ -53,12 +53,11 @@ Cluster your FASTA sequences using CD-HIT. For highly conserved proteins, use ~9
 
 `python3 biscotti.py --msa_file MSA_FILE --clstr_file CLSTR_FILE --output_file OUTPUT_FILE --nproc 1-10`
 
-**NOTE*: Although BISCOTTI is optimised for efficiency, its performance scales with the number of available CPU cores, with more cores yielding faster computation.
-
 **Output:**
 
 `foo.csv `
 
+**NOTE*: Although BISCOTTI is optimised for efficiency, its performance scales with the number of available CPU cores, with more cores yielding faster computation.
 
 ## Rationale
 
