@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
-title: "BISCOTTI: BLOSUM substitution matrix builder"
+title: "BISCOTTI: A Scalable Tool for Custom BLOSUM Matrix Construction"
 version: "1.4.1"
 date-released: 2025-10-19
 authors:
