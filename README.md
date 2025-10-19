@@ -17,7 +17,7 @@ BISCOTTI is a high-performance Python tool for generating custom substitution ma
 
 ---
 
-## 📘 Documentation
+## Documentation
 
 The full mathematical formulation (Henikoff weighting, pair counting, probability calculations, and log-odds scoring) is available on the MathJax-rendered site:
 
