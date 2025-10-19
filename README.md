@@ -7,10 +7,23 @@
   <img src="https://img.shields.io/badge/language-Python-yellow?style=flat-square" alt="Language: Python">
   <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License: MIT">
   <img src="https://img.shields.io/badge/code%20style-black-black?style=flat-square" alt="Code style: black">
+  <a href="https://skose82.github.io/biscotti/">
+    <img src="https://img.shields.io/badge/View%20MathJax%20Docs-Click%20Here-blue?style=flat-square" alt="MathJax Documentation">
+  </a>
 </p>
 
 BISCOTTI is a high-performance Python tool for generating custom substitution matrices from large-scale multiple sequence alignments (>30k sequences).  
 This tool was developed by S.H.Kose in collaboration with the Tregoning Lab @ Imperial College London. It features redundancy reduction, Henikoff weighting, and BLOSUM-style log-odds scoring.  
+
+---
+
+## 📘 Documentation
+
+The full mathematical formulation (Henikoff weighting, pair counting, probability calculations, and log-odds scoring) is available on the MathJax-rendered site:
+
+👉 **[View the Biscotti Substitution Matrix MathJax Page](https://skose82.github.io/biscotti/)**
+
+This page provides a complete explanation of the equations and their derivations with properly formatted LaTeX.
 
 ---
 
@@ -25,6 +38,17 @@ BISCOTTI implements:
 - Output of symmetric 20×20 substitution matrices in CSV format  
 
 ---
+
+## Usage
+
+### QC and Align Sequences
+Filter and align your sequences using a tool like MAFFT.
+
+### Cluster Sequences
+Cluster your FASTA sequences using CD-HIT. For highly conserved proteins, use ~90% identity cutoff:
+
+```bash
+cd-hit -i RSV_A.fasta -o clustered_RSVA90.fasta -c 0.90 -n 5 -d 0
 
 ## Usage
 
