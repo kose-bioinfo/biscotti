@@ -2,7 +2,7 @@
 # BISCOTTI — Crunching Alignments into Perfect BLOSUM Matrices
 
 <p align="left">
-  <img src="https://img.shields.io/badge/release-v1.4.0-blue?style=flat-square" alt="Release v1.4.0">
+  <img src="https://img.shields.io/badge/release-v1.4.0-blue?style=flat-square" alt="Release v1.4.1">
   <img src="https://img.shields.io/badge/language-Python-yellow?style=flat-square" alt="Language: Python">
   <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License: MIT">
   <img src="https://img.shields.io/badge/code%20style-black-black?style=flat-square" alt="Code style: black">
