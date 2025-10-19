@@ -1,7 +1,5 @@
 # BISCOTTI — Crunching Alignments into Perfect BLOSUM Matrices
 
-*A high-performance Python tool for generating custom BLOSUM-like substitution matrices from large-scale multiple sequence alignments.*
-
 <!-- Badges -->
 [![Release](https://img.shields.io/github/v/release/kose-bioinfo/biscotti?style=flat-square)](https://github.com/kose-bioinfo/biscotti/releases)
 [![Language](https://img.shields.io/badge/language-Python-yellow?style=flat-square)]()
@@ -13,7 +11,7 @@
 
 <!-- Left-aligned logo with intro text -->
 <p float="left">
-  <img src="https://github.com/user-attachments/assets/b33c76f0-0ae7-41b0-aaf4-2ffb58b28be1" alt="italian-cantuccini-biscotti-stacked" width="80" style="float:left; margin-right:15px;">
+  <img src="https://github.com/user-attachments/assets/b33c76f0-0ae7-41b0-aaf4-2ffb58b28be1" alt="italian-cantuccini-biscotti-stacked" width="50" style="float:left; margin-right:15px;">
   <span>
     <strong>BISCOTTI</strong> is a high-performance Python tool for generating custom substitution matrices from large-scale multiple sequence alignments (&gt;30k sequences). This tool was developed by S.H. Kose in collaboration with the Tregoning Lab @ Imperial College London. It features redundancy reduction, Henikoff weighting, and BLOSUM-style log-odds scoring.
   </span>
@@ -49,10 +47,12 @@ This page provides a complete explanation of the equations and their derivations
 ## Usage
 
 **QC and Align Sequences**
-Filter and align your sequences using a tool like MAFFT or CLUSTAL W.
+
+Filter and align your sequences using a tool like **MAFFT** or **CLUSTALW**.
 
 **Cluster Sequences**
-Cluster your FASTA sequences using CD-HIT. For highly conserved proteins, use ~90% identity cutoff:
+
+Cluster your FASTA sequences using **CD-HIT**. For highly conserved proteins, use ~90% identity cutoff:
 
 ```
 cd-hit -i RSV_A.fasta -o clustered_RSVA90.fasta -c 0.90 -n 5 -d 0
