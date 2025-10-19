@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "BISCOTTI: BLOSUM substitution matrix builder"
+version: "1.4.0"
+date-released: 2025-10-19
+authors:
+  - family-names: Kose
+    given-names: Sureyya H.
+repository-code: "https://github.com/kose-bioinfo/biscotti"
+preferred-citation:
+  type: article
+  title: "An integrated in silico and in vitro genotype‐to‐phenotype pipeline to predict and characterise RSV F site zero escape mutants"
+  authors:
+    - family-names: Mosscrop
+      given-names: Lucy G.
+    - family-names: Gerardi
+      given-names: Valeria
+    - family-names: Kose
+      given-names: Sureyya H.
+    - family-names: Talts
+      given-names: Tiina
+    - family-names: Thomas
+      given-names: Chubicka
+    - family-names: Paschos
+      given-names: Kostas
+    - family-names: Brown
+      given-names: Jonathan
+    - family-names: Williams
+      given-names: Thomas C.
+    - family-names: Skinner
+      given-names: Mike
+    - family-names: Zambon
+      given-names: Maria
+    - family-names: Bravi
+      given-names: Barbara
+    - family-names: Tregoning
+      given-names: John S.
+  year: 2025
+  type: article
+url: "https://doi.org/XXXX/XXXX"  # replace with actual DOI when available
