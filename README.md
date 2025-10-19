@@ -21,7 +21,7 @@ This tool was developed by S.H.Kose in collaboration with the Tregoning Lab @ Im
 
 The full mathematical formulation (Henikoff weighting, pair counting, probability calculations, and log-odds scoring) is available on the MathJax-rendered site:
 
-👉 **[View the Biscotti Substitution Matrix MathJax Page](https://kose-bioinfo.github.io/biscotti/)** 
+**[View the Biscotti Substitution Matrix MathJax Page](https://kose-bioinfo.github.io/biscotti/)** 
 
 This page provides a complete explanation of the equations and their derivations with properly formatted LaTeX.
 
@@ -49,24 +49,20 @@ Cluster your FASTA sequences using CD-HIT. For highly conserved proteins, use ~9
 
 ```bash
 cd-hit -i RSV_A.fasta -o clustered_RSVA90.fasta -c 0.90 -n 5 -d 0
-
+```bash
 ## Usage
 
-### QC and Align Sequences
-Filter and align your sequences using a tool like MAFFT.
 
-### Cluster Sequences
-Cluster your FASTA sequences using CD-HIT. For highly conserved proteins, use ~90% identity cutoff:
+Run BISCOTTI
+```bash
 
-bash
-cd-hit -i RSV_A.fasta -o clustered_RSVA90.fasta -c 0.90 -n 5 -d 0
-Step 3: Run BISCOTTI
-bash
-Copy code
 python3 biscotti.py --msa_file MSA_FILE --clstr_file CLSTR_FILE --output_file OUTPUT_FILE --nproc 1-10
+
+```bash
+
 Output:
 
-RSVA_F_blosum_90.csv — your custom 20×20 substitution matrix.
+foo.csv — your custom 20×20 substitution matrix.
 
 ## Rationale
 
