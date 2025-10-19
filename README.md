@@ -18,11 +18,12 @@ _Crunching alignments into your perfect BLOSUM_
 </p>
 
 > **BISCOTTI** (BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation Indices).
-> BISCOTTI is a Python tool to build custom substitution matrices from large scale multiple sequence alignments (MSAs).
-
 
 ## Overview
 
+BISCOTTI is a Python tool to build custom substitution matrices from large scale (>30k) multiple sequence alignments (MSAs). 
+
+It implements:
 - Redundancy reduction via CD-HIT clustering.  
 - Henikoff sequence weighting within clusters.  
 - Weighted amino acid pair counting.  
