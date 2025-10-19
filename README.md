@@ -1,151 +1,75 @@
+<img src="https://github.com/user-attachments/assets/b33c76f0-0ae7-41b0-aaf4-2ffb58b28be1" alt="italian-cantuccini-biscotti-stacked" width="120">
 
-
-
-
-<img src="https://github.com/user-attachments/assets/b33c76f0-0ae7-41b0-aaf4-2ffb58b28be1" alt="italian-cantuccini-biscotti-stacked" width="100"> 
-
-## BISCOTTI: _Crunching alignments into your perfect BLOSUM_
-
+# BISCOTTI — Crunching Alignments into Perfect BLOSUM Matrices
 
 <p align="left">
-  <!-- Release version badge -->
   <img src="https://img.shields.io/badge/release-v1.4.0-blue?style=flat-square" alt="Release v1.4.0">
-  <!-- Development language badge -->
-  <img src="https://img.shields.io/badge/language-python-yellow?style=flat-square" alt="Language: Python">
-  <!-- MIT License badge -->
+  <img src="https://img.shields.io/badge/language-Python-yellow?style=flat-square" alt="Language: Python">
   <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License: MIT">
-  <!-- Code style: black badge -->
   <img src="https://img.shields.io/badge/code%20style-black-black?style=flat-square" alt="Code style: black">
 </p>
 
-BISCOTTI is a Python tool to build custom substitution matrices from large scale (>30k) multiple sequence alignments (MSAs) developed by S.H.Kose. 
-
-Please cite Loes et al (2024) if you use this pipeline for your scientific study.
-
-See here for a list of the contributors to this pipeline.
-
-## Overview
-
-BISCOTTI is a Python tool to build custom substitution matrices from large scale (>30k) multiple sequence alignments (MSAs). 
-
-It implements:
-- Redundancy reduction via CD-HIT clustering.  
-- Henikoff sequence weighting within clusters.  
-- Weighted amino acid pair counting.  
-- Computation of log-odds substitution scores (BLOSUM-style).  
-- Output of symmetric 20×20 substitution matrices in CSV format.  
-
-## Usage
-
-QC Filter and align your sequences (e.g with mafft) 
-
-Cluster your FASTA sequences with CD-HIT (e.g., 90% identity for highly conserved proteins):
-
-```
-cd-hit -i RSV_A.fasta -o clustered_RSVA90.fasta -c 0.90 -n 5 -d 0
-```
-
-Run the script:
-
-```
-python3 biscotti.py --msa_file MSA_FILE --clstr_file CLSTR_FILE --output_file OUTPUT_FILE --nproc 1-10 
-```
-
-Output:
-
-RSVA_F_blosum_90.csv — custom 20×20 substitution matrix.
- 
-## Algorithm/rationale
-
-```
-1. Henikoff weighting
-
-For each sequence i, weight is computed across alignment positions:
-
-w_i = Σ_p ( 1 / ( r_p * n_ap ) )
-
-r_p = number of unique residues at position p
-
-n_ap = count of amino acid a at position p
-
-Normalise weights:
-
-w_i = w_i / Σ_i w_i
-
-2. Weighted pair counting (per cluster)
-
-For each cluster:
-
-Iterate through alignment positions.
-
-Collect weighted amino acid counts.
-
-Count all unique residue pairs (aa1, aa2):
-
-C(aa1, aa2) += 2 * w1 * w2    if aa1 != aa2
-C(aa, aa)   += w^2            for aa == aa
-
-3: Combine clusters
-C_total(aa1, aa2) = Σ_clusters C_cluster(aa1, aa2)
-
-4: Background frequencies
-
-From symmetric pair counts:
-
-A[a] = 2*C[a,a] + Σ_{b != a} C[a,b]
-
-Normalise:
-
-P_obs(a) = A[a] / Σ_z A[z]
-
-5: Observed vs expected pair probabilities
-
-Observed pair probabilities:
-
-P_obs(a,b) = C_total(a,b) / Σ_{x<=y} C_total(x,y)
-
-Expected probabilities under independence:
-
-P_exp(a,b) = P_obs(a)^2                if a == b
-P_exp(a,b) = 2 * P_obs(a) * P_obs(b)   if a != b
-
-Step 6: Log-odds substitution scores
-S(a,b) = log2( P_obs(a,b) / P_exp(a,b) )
-LOD(a,b) = round( SCALE * S(a,b) )
-
-Scores are symmetric (S(a,b) = S(b,a)).
-```
-Pseudocounts (α = 0.1) are added to avoid zero probabilities.
-
-Final result is a 20×20 CSV matrix (rows and columns in amino acid order).
-
-
-## Associated publication and references
-
-This repository contains the BLOSUM matrix software developed for the following study:
-
-**Mosscrop, L. G.†, Gerardi, V.†, Kose, S. H., Talts, T., Thomas, C., Paschos, K., Brown, J., Williams, T. C., Skinner, M., Zambon, M., Bravi, B. & Tregoning, J. S.\***
-*An integrated in silico and in vitro genotype-to-phenotype pipeline to predict and characterise RSV F site zero escape mutants.* (2025, under review)
+BISCOTTI is a high-performance Python tool for generating custom substitution matrices from large-scale multiple sequence alignments (>30k sequences).  
+This tool was developed by S.H.Kose in collaboration with the Tregoning Lab @ Imperial College London. It features redundancy reduction, Henikoff weighting, and BLOSUM-style log-odds scoring.  
 
 ---
 
+## Overview
 
-## Citation & contributions
+BISCOTTI implements:
 
+- Redundancy reduction via CD-HIT clustering  
+- Henikoff sequence weighting within clusters  
+- Weighted amino acid pair counting  
+- Computation of log-odds substitution scores (BLOSUM-style)  
+- Output of symmetric 20×20 substitution matrices in CSV format  
+
+---
+
+## Usage
+
+### QC and Align Sequences
+Filter and align your sequences using a tool like MAFFT.
+
+### Cluster Sequences
+Cluster your FASTA sequences using CD-HIT. For highly conserved proteins, use ~90% identity cutoff:
+
+bash
+cd-hit -i RSV_A.fasta -o clustered_RSVA90.fasta -c 0.90 -n 5 -d 0
+Step 3: Run BISCOTTI
+bash
+Copy code
+python3 biscotti.py --msa_file MSA_FILE --clstr_file CLSTR_FILE --output_file OUTPUT_FILE --nproc 1-10
+Output:
+
+RSVA_F_blosum_90.csv — your custom 20×20 substitution matrix.
+
+## Rationale
+
+
+Biscotti takes aligned sequences, applies **Henikoff weighting** to correct for overrepresentation, counts weighted amino acid pairs, and computes **log-odds substitution scores** with pseudocounts. The output is a robust substitution matrix suitable for downstream bioinformatics analyses.
+
+
+
+## Associated Publication
+
+This repository contains the BLOSUM matrix software developed for:
+
+Mosscrop, L. G.†, Gerardi, V.†, Kose, S. H., Talts, T., Thomas, C., Paschos, K., Brown, J., Williams, T. C., Skinner, M., Zambon, M., Bravi, B., & Tregoning, J. S.
+An integrated in silico and in vitro genotype-to-phenotype pipeline to predict and characterise RSV F site zero escape mutants. (2025, under review)
+
+Citation & Contributions
 
 If you use this code or adapt components in your research, please cite:
 
-Kose, S. H. (2025). *BISCOTTI: A Scalable Tool for Custom BLOSUM Matrix Construction. GitHub repository: [https://github.com/kose-bioinfo/biscotti](https://github.com/kose-bioinfo/biscotti)
+Kose, S. H. (2025). BISCOTTI: A Scalable Tool for Custom BLOSUM Matrix Construction. GitHub repository: https://github.com/kose-bioinfo/biscotti
 
-This software was developed by S.H.Kose for the following study:
+Acknowledgements:
 
-Mosscrop, L. G.†, Gerardi, V.†, Kose, S. H., Talts, T., Thomas, C., Paschos, K., Brown, J., Williams, T. C., Skinner, M., Zambon, M., Bravi, B. & Tregoning, J. S.**An integrated in silico and in vitro genotype-to-phenotype pipeline to predict and characterise RSV F site zero escape mutants.* (2025, under review)
+Thanks to Barbara Bravi for conceptual input and mathematical oversight, and Valeria Gerardi for data preparation and analysis.
 
-Thanks go to **Barbara Bravi** for conceptual input and mathematical oversight and **Valeria Gerardi** for data preperation and analysis. 
-
-
-## Other references
+Other References
 
 Henikoff, S., & Henikoff, J. G. (1992). Amino acid substitution matrices from protein blocks. PNAS, 89(22), 10915–10919. PMID: 1438297
 
-Li, W., & Godzik, A. (2006). Cd-hit: a fast program for clustering and comparing large sets of protein or nucleotide sequences. Bioinformatics, 22(13), 1658–1659.
+Li, W., & Godzik, A. (2006). Cd-hit: a fast program for clustering and comparing large sets of protein or nucleotide sequences. Bioinformatics, 22(13), 1658–1659
