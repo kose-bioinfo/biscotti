@@ -18,12 +18,10 @@ _Crunching alignments into your perfect BLOSUM_
 </p>
 
 > **BISCOTTI** (BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation Indices).
-> 
-> BISCOTTI is a Python tool to build custom substitution matrices from large multiple sequence alignments (MSAs).  
+> BISCOTTI is a Python tool to build custom substitution matrices from large scale multiple sequence alignments (MSAs).
 
 
-
-# Features
+## Overview
 
 - Redundancy reduction via CD-HIT clustering.  
 - Henikoff sequence weighting within clusters.  
@@ -31,7 +29,7 @@ _Crunching alignments into your perfect BLOSUM_
 - Computation of log-odds substitution scores (BLOSUM-style).  
 - Output of symmetric 20×20 substitution matrices in CSV format.  
 
-# Usage
+## Usage
 
 QC Filter and align your sequences (e.g with mafft) 
 
@@ -50,8 +48,8 @@ python3 biscotti.py --msa_file MSA_FILE --clstr_file CLSTR_FILE --output_file OU
 Output:
 
 RSVA_F_blosum_90.csv — custom 20×20 substitution matrix.
-
-# Algorithm/rationale
+ 
+## Algorithm/rationale
 
 ```
 1. Henikoff weighting
@@ -116,7 +114,7 @@ Pseudocounts (α = 0.1) are added to avoid zero probabilities.
 Final result is a 20×20 CSV matrix (rows and columns in amino acid order).
 
 
-# Associated publication and references
+## Associated publication and references
 
 This repository contains the BLOSUM matrix software developed for the following study:
 
@@ -126,22 +124,21 @@ This repository contains the BLOSUM matrix software developed for the following 
 ---
 
 
-# Code development and contributions
+## Citation & contributions
 
-Developed by of the custom BLOSUM-matrix generation algorithm and software implementation of **BISCOTTI** were carried out by .
-
-Thanks to **Barbara Bravi** for conceptual input and mathematical oversight and **Valeria Gerardi** for data preperation and analysis, and methodological discussions as part of this collaborative research project.
-
----
-
-# Citation
 
 If you use this code or adapt components in your research, please cite:
 
-> Kose, S. H. (2025). *BISCOTTI: .*  
-> GitHub repository: [https://github.com/kose-bioinfo/biscotti](https://github.com/kose-bioinfo/biscotti)
+Kose, S. H. (2025). *BISCOTTI: A Scalable Tool for Custom BLOSUM Matrix Construction. GitHub repository: [https://github.com/kose-bioinfo/biscotti](https://github.com/kose-bioinfo/biscotti)
 
-Other references:
+This software was developed by S.H.Kose for the following study:
+
+Mosscrop, L. G.†, Gerardi, V.†, Kose, S. H., Talts, T., Thomas, C., Paschos, K., Brown, J., Williams, T. C., Skinner, M., Zambon, M., Bravi, B. & Tregoning, J. S.**An integrated in silico and in vitro genotype-to-phenotype pipeline to predict and characterise RSV F site zero escape mutants.* (2025, under review)
+
+Thanks go to **Barbara Bravi** for conceptual input and mathematical oversight and **Valeria Gerardi** for data preperation and analysis. 
+
+
+## Other references
 
 Henikoff, S., & Henikoff, J. G. (1992). Amino acid substitution matrices from protein blocks. PNAS, 89(22), 10915–10919. PMID: 1438297
 
