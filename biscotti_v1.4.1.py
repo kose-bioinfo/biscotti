@@ -1,3 +1,8 @@
+# BISCOTTI: Crunching Alignments into Perfect BLOSUM Matrices
+# Copyright (C) 2025 S.H.Kose
+# Licensed under the GNU General Public License v3.0
+# See LICENSE file for details
+
 #!/usr/bin/env python3
 from collections import defaultdict
 from Bio import SeqIO
