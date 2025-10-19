@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/language-Python-yellow?style=flat-square" alt="Language: Python">
   <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License: MIT">
   <img src="https://img.shields.io/badge/code%20style-black-black?style=flat-square" alt="Code style: black">
-  <a href="https://skose82.github.io/biscotti/">
+  <a href="https://kose-bioinfo.github.io/biscotti/">
     <img src="https://img.shields.io/badge/View%20MathJax%20Docs-Click%20Here-blue?style=flat-square" alt="MathJax Documentation">
   </a>
 </p>
