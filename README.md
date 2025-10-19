@@ -28,7 +28,7 @@ BISCOTTI implements:
 ## Documentation
 
 
-BISCOTTI adapts the widely used **[Henikoff method](https://pmc.ncbi.nlm.nih.gov/articles/PMC50453/)**  for constructing BLOSUM-like matrices by incorporating weighted sequence contributions and custom scoring options. While Henikoff's original approach laid the foundation for position-specific residue weighting, this implementation extends it to handle large datasets efficiently and allows users to customise the scoring scheme, making it more flexible for diverse protein families.
+BISCOTTI adapts the widely used **[Henikoff method](https://pmc.ncbi.nlm.nih.gov/articles/PMC50453/)**  for constructing BLOSUM-like matrices by incorporating weighted sequence contributions and custom scoring options. While Henikoff's original approach laid the foundation for position-specific residue weighting and clustering, this implementation extends it to handle large datasets efficiently and allows users to customise the scoring scheme, making it more flexible for diverse protein families.
 
 The full mathematical formulation (Henikoff weighting, pair counting, probability calculations, and log-odds scoring) is available on the MathJax-rendered site:
 
@@ -58,11 +58,6 @@ Cluster your FASTA sequences using CD-HIT. For highly conserved proteins, use ~9
 `foo.csv `
 
 **NOTE*: Although BISCOTTI is optimised for efficiency, its performance scales with the number of available CPU cores, with more cores yielding faster computation.
-
-## Rationale
-
-Biscotti takes aligned sequences, applies **Henikoff weighting** to correct for overrepresentation, counts weighted amino acid pairs, and computes **log-odds substitution scores** with pseudocounts. The output is a robust substitution matrix suitable for downstream bioinformatics analyses.
-please see docs above for details. 
 
 
 ## Associated Publication
