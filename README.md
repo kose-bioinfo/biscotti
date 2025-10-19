@@ -21,7 +21,7 @@ This tool was developed by S.H.Kose in collaboration with the Tregoning Lab @ Im
 
 The full mathematical formulation (Henikoff weighting, pair counting, probability calculations, and log-odds scoring) is available on the MathJax-rendered site:
 
-👉 **[View the Biscotti Substitution Matrix MathJax Page](https://skose82.github.io/biscotti/)**
+👉 **[View the Biscotti Substitution Matrix MathJax Page](https://kose-bioinfo.github.io/biscotti/)** 
 
 This page provides a complete explanation of the equations and their derivations with properly formatted LaTeX.
 
