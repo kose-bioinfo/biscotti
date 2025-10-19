@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biscotti Substitution Matrix — MathJax</title>
+
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <style>
+    body {
+      font-family: "Georgia", serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 0 1em;
+      color: #222;
+    }
+    h1, h2, h3 {
+      color: #003366;
+    }
+    hr {
+      margin: 2em 0;
+    }
+    code {
+      background: #f6f8fa;
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Biscotti Substitution Matrix Calculation</h1>
+
+<p>This document describes the calculation of substitution scores from aligned sequences using Henikoff weighting, weighted amino acid pair counting, and log-odds scoring (BLOSUM-style).</p>
+
+<hr>
+
+<h2>1. Henikoff Sequence Weighting</h2>
+
+<p>To correct for unequal sequence representation while preserving overall diversity, <strong>Henikoff sequence weights</strong> are applied. For each sequence \(i\), the weight is:</p>
+
+$$
+w_i = \sum_p \frac{1}{r_p \cdot n_{a,p}}
+$$
+
+<p>Where:</p>
+
+<ul>
+  <li>\(r_p\) = number of unique residues at alignment position \(p\)</li>
+  <li>\(n_{a,p}\) = count of amino acid \(a\) at position \(p\)</li>
+</ul>
+
+<p>These weights ensure that sequences from overrepresented families do not dominate the calculation.</p>
+
+<hr>
+
+<h2>2. Weighted Amino Acid Pair Counting</h2>
+
+<p>For each cluster of sequences, <strong>weighted amino acid pair counts</strong> are collected across alignment positions:</p>
+
+$$
+C(aa_1, aa_2)^+ =
+\begin{cases} 
+2 \cdot w_1 \cdot w_2 & \text{if } aa_1 \neq aa_2 \\
+w_2 & \text{if } aa_1 = aa_2
+\end{cases}
+$$
+
+<p>Counts from all clusters are then aggregated:</p>
+
+$$
+C_\text{total}(aa_1, aa_2) = \sum_\text{clusters} C_\text{cluster}(aa_1, aa_2)
+$$
+
+<p>This produces a symmetric matrix of observed pair frequencies, weighted by sequence representation.</p>
+
+<hr>
+
+<h2>3. Observed and Expected Probabilities</h2>
+
+<p>The <strong>observed probability</strong> of aligning amino acids \(\alpha_1\) and \(\alpha_2\) is:</p>
+
+$$
+P_\text{obs}(\alpha_1, \alpha_2) = C_\text{total}(\alpha_1, \alpha_2) + \alpha
+$$
+
+<p>where \(\alpha = 0.1\) is a pseudocount to avoid zero probabilities.</p>
+
+<p>The <strong>expected probability</strong> under the assumption of independent amino acid occurrence is:</p>
+
+$$
+P_\text{exp}(\alpha_1, \alpha_2) =
+\begin{cases} 
+P_\text{obs}(\alpha_1)^2 & \text{if } \alpha_1 = \alpha_2 \\
+2 \cdot P_\text{obs}(\alpha_1) \cdot P_\text{obs}(\alpha_2) & \text{if } \alpha_1 \neq \alpha_2
+\end{cases}
+$$
+
+<hr>
+
+<h2>4. Log-Odds Substitution Scores</h2>
+
+<p>Finally, substitution scores are computed as <strong>log-odds ratios</strong>:</p>
+
+$$
+S(\alpha_1, \alpha_2) = \log_2 \frac{P_\text{obs}(\alpha_1, \alpha_2)}{P_\text{exp}(\alpha_1, \alpha_2)}
+$$
+
+<p>These scores are symmetric:</p>
+
+$$
+S(\alpha_1, \alpha_2) = S(\alpha_2, \alpha_1)
+$$
+
+<p>The result is a \(20 \times 20\) substitution matrix capturing amino acid preferences in the input sequences, weighted to account for redundancy.</p>
+
+<hr>
+
+<h2>Summary</h2>
+
+<p>
+Biscotti takes aligned sequences, applies <strong>Henikoff weighting</strong> to correct for overrepresentation, 
+counts weighted amino acid pairs, and computes <strong>log-odds substitution scores</strong> with pseudocounts.
+The output is a robust substitution matrix suitable for downstream bioinformatics analyses.
+</p>
+
+</body>
+</html>
