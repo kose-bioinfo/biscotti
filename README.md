@@ -58,7 +58,7 @@ Run BISCOTTI
 **NOTE*: Although BISCOTTI is optimised for efficiency, its performance scales with the number of available CPU cores, with more cores yielding faster computation.
 
 
-## Output:
+### Output:
 
 `foo.csv `
 
