@@ -78,7 +78,7 @@ If you use this code or adapt components in your research, please cite:
 Special thanks to:  
 
 - Valeria Gerardi – for MSA alignments, data preparation and analysis.
-- [Barbara Bravi](https://github.com/bbravi) – for conceptual guidance, and suggesting the log-odds scoring approach for BLOSUM matrices.  
+- [Barbara Bravi](https://github.com/bbravi) – for conceptual guidance, and suggesting the BLOSUM log-odds scoring approach.  
 
 
 
