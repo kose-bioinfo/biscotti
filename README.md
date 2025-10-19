@@ -1,23 +1,25 @@
-
 # BISCOTTI — Crunching Alignments into Perfect BLOSUM Matrices
 
-<p align="left">
-  <img src="https://img.shields.io/badge/release-v1.4.0-blue?style=flat-square" alt="Release v1.4.1">
-  <img src="https://img.shields.io/badge/language-Python-yellow?style=flat-square" alt="Language: Python">
-  <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License: MIT">
-  <img src="https://img.shields.io/badge/code%20style-black-black?style=flat-square" alt="Code style: black">
-  <a href="https://kose-bioinfo.github.io/biscotti/">
-    <img src="https://img.shields.io/badge/View%20MathJax%20Docs-Click%20Here-blue?style=flat-square" alt="MathJax Documentation">
-  </a>
-</p>
+*A high-performance Python tool for generating custom BLOSUM-like substitution matrices from large-scale multiple sequence alignments.*
 
+<!-- Badges -->
+[![Release](https://img.shields.io/github/v/release/kose-bioinfo/biscotti?style=flat-square)](https://github.com/kose-bioinfo/biscotti/releases)
+[![Language](https://img.shields.io/badge/language-Python-yellow?style=flat-square)]()
+[![License](https://img.shields.io/github/license/kose-bioinfo/biscotti?style=flat-square)](LICENSE)
+[![Code Style](https://img.shields.io/badge/code%20style-black-black?style=flat-square)]()
+[![MathJax Docs](https://img.shields.io/badge/View%20MathJax%20Docs-Click%20Here-blue?style=flat-square)](https://kose-bioinfo.github.io/biscotti/)
 
+---
+
+<!-- Left-aligned logo with intro text -->
 <p float="left">
-  <img src="https://github.com/user-attachments/assets/b33c76f0-0ae7-41b0-aaf4-2ffb58b28be1" alt="italian-cantuccini-biscotti-stacked" width="50" style="float:left; margin-right:15px;">
+  <img src="https://github.com/user-attachments/assets/b33c76f0-0ae7-41b0-aaf4-2ffb58b28be1" alt="italian-cantuccini-biscotti-stacked" width="80" style="float:left; margin-right:15px;">
   <span>
     <strong>BISCOTTI</strong> is a high-performance Python tool for generating custom substitution matrices from large-scale multiple sequence alignments (&gt;30k sequences). This tool was developed by S.H. Kose in collaboration with the Tregoning Lab @ Imperial College London. It features redundancy reduction, Henikoff weighting, and BLOSUM-style log-odds scoring.
   </span>
 </p>
+
+
 
 ## Overview
 
