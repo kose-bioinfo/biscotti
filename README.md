@@ -17,7 +17,8 @@ _Crunching alignments into your perfect BLOSUM_
   <img src="https://img.shields.io/badge/code%20style-black-black?style=flat-square" alt="Code style: black">
 </p>
 
-> **BISCOTTI** (BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation Indices)
+> **BISCOTTI** (BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation Indices).
+> 
 > BISCOTTI is a Python tool to build custom substitution matrices from large multiple sequence alignments (MSAs).  
 
 
@@ -117,18 +118,19 @@ Final result is a 20×20 CSV matrix (rows and columns in amino acid order).
 
 # Associated publication and references
 
-This repository contains the computational framework developed for the following study:
+This repository contains the BLOSUM matrix software developed for the following study:
 
 **Mosscrop, L. G.†, Gerardi, V.†, Kose, S. H., Talts, T., Thomas, C., Paschos, K., Brown, J., Williams, T. C., Skinner, M., Zambon, M., Bravi, B. & Tregoning, J. S.\***
 *An integrated in silico and in vitro genotype-to-phenotype pipeline to predict and characterise RSV F site zero escape mutants.* (2025, under review)
 
 ---
 
+
 # Code development and contributions
 
-The core algorithmic implementation and full software development of **BISCOTTI** were carried out by **Sureyya H. Kose**, including design and implementation of the custom BLOSUM-matrix generation logic and computational pipeline.
+Developed by of the custom BLOSUM-matrix generation algorithm and software implementation of **BISCOTTI** were carried out by .
 
-Conceptual input, dataset provision, and methodological discussions were contributed by the co-authors as part of the collaborative research project.
+Thanks to **Barbara Bravi** for conceptual input and mathematical oversight and **Valeria Gerardi** for data preperation and analysis, and methodological discussions as part of this collaborative research project.
 
 ---
 
