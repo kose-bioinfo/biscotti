@@ -47,15 +47,19 @@ Filter and align your sequences using a tool like MAFFT or CLUSTAL W.
 **Cluster Sequences**
 Cluster your FASTA sequences using CD-HIT. For highly conserved proteins, use ~90% identity cutoff:
 
-`cd-hit -i RSV_A.fasta -o clustered_RSVA90.fasta -c 0.90 -n 5 -d 0`
+```
+cd-hit -i RSV_A.fasta -o clustered_RSVA90.fasta -c 0.90 -n 5 -d 0
+```
 
 **Run BISCOTTI:**
 
-`python3 biscotti.py --msa_file MSA_FILE --clstr_file CLSTR_FILE --output_file OUTPUT_FILE --nproc 1-10`
+```
+python3 biscotti.py --msa_file MSA_FILE --clstr_file CLSTR_FILE --output_file OUTPUT_FILE --nproc 1-10
+```
 
 **Output:**
 
-`foo.csv `
+```foo.csv ```
 
 **NOTE*: Although BISCOTTI is optimised for efficiency, its performance scales with the number of available CPU cores, with more cores yielding faster computation.
 
