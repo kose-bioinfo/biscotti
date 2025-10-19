@@ -1,10 +1,11 @@
 
-[//]: # (img src="https://github.com/user-attachments/assets/3f0993dc-54ec-4301-bf27-fa961159cf13" alt="BISCOTTI logo" width="30" height="30" align="left" />)
 
 
-# BISCOTTI
 
-_Crunching alignments into your perfect BLOSUM_
+<img src="https://github.com/user-attachments/assets/b33c76f0-0ae7-41b0-aaf4-2ffb58b28be1" alt="italian-cantuccini-biscotti-stacked" width="100"> 
+
+## BISCOTTI: _Crunching alignments into your perfect BLOSUM_
+
 
 <p align="left">
   <!-- Release version badge -->
@@ -17,7 +18,11 @@ _Crunching alignments into your perfect BLOSUM_
   <img src="https://img.shields.io/badge/code%20style-black-black?style=flat-square" alt="Code style: black">
 </p>
 
-> **BISCOTTI** (BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation Indices).
+BISCOTTI is a Python tool to build custom substitution matrices from large scale (>30k) multiple sequence alignments (MSAs) developed by S.H.Kose. 
+
+Please cite Loes et al (2024) if you use this pipeline for your scientific study.
+
+See here for a list of the contributors to this pipeline.
 
 ## Overview
 
