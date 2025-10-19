@@ -17,24 +17,18 @@ _Crunching alignments into your perfect BLOSUM_
   <img src="https://img.shields.io/badge/code%20style-black-black?style=flat-square" alt="Code style: black">
 </p>
 
-BISCOTTI or BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation Indices is a Python tool for building custom substitution matrices from multiple sequence alignments (MSAs).
+> **BISCOTTI** (BLOSUM Individualised Substitution Calculator Optimised for Tailored Translation Indices)
+> BISCOTTI is a Python tool to build custom substitution matrices from large multiple sequence alignments (MSAs).  
 
-...
+
+
 # Features
 
-Loads large MSAs (10k+ sequences).
-
-Uses CD-HIT clustering to reduce redundancy.
-
-Applies Henikoff sequence weighting within clusters.
-
-Aggregates weighted amino acid pair counts.
-
-Adds pseudocounts to avoid zero probabilities.
-
-Computes log-odds substitution scores (BLOSUM style).
-
-Outputs a symmetric 20×20 substitution matrix in CSV.
+- Redundancy reduction via CD-HIT clustering.  
+- Henikoff sequence weighting within clusters.  
+- Weighted amino acid pair counting.  
+- Computation of log-odds substitution scores (BLOSUM-style).  
+- Output of symmetric 20×20 substitution matrices in CSV format.  
 
 # Usage
 
@@ -120,9 +114,32 @@ Pseudocounts (α = 0.1) are added to avoid zero probabilities.
 
 Final result is a 20×20 CSV matrix (rows and columns in amino acid order).
 
-# References
 
-[Paper] 
+# Associated publication and references
+
+This repository contains the computational framework developed for the following study:
+
+**Mosscrop, L. G.†, Gerardi, V.†, Kose, S. H., Talts, T., Thomas, C., Paschos, K., Brown, J., Williams, T. C., Skinner, M., Zambon, M., Bravi, B. & Tregoning, J. S.\***
+*An integrated in silico and in vitro genotype-to-phenotype pipeline to predict and characterise RSV F site zero escape mutants.* (2025, under review)
+
+---
+
+# Code development and contributions
+
+The core algorithmic implementation and full software development of **BISCOTTI** were carried out by **Sureyya H. Kose**, including design and implementation of the custom BLOSUM-matrix generation logic and computational pipeline.
+
+Conceptual input, dataset provision, and methodological discussions were contributed by the co-authors as part of the collaborative research project.
+
+---
+
+# Citation
+
+If you use this code or adapt components in your research, please cite:
+
+> Kose, S. H. (2025). *BISCOTTI: .*  
+> GitHub repository: [https://github.com/kose-bioinfo/biscotti](https://github.com/kose-bioinfo/biscotti)
+
+Other references:
 
 Henikoff, S., & Henikoff, J. G. (1992). Amino acid substitution matrices from protein blocks. PNAS, 89(22), 10915–10919. PMID: 1438297
 
