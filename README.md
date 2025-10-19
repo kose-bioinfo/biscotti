@@ -12,8 +12,8 @@
   </a>
 </p>
 
-BISCOTTI is a high-performance Python tool for generating custom substitution matrices from large-scale multiple sequence alignments (>30k sequences).  
-This tool was developed by S.H.Kose in collaboration with the Tregoning Lab @ Imperial College London. It features redundancy reduction, Henikoff weighting, and BLOSUM-style log-odds scoring.  
+BISCOTTI is a high-performance Python tool for generating custom substitution matrices from large-scale multiple sequence alignments (>30k sequences). This tool was developed by S.H.Kose in collaboration with the Tregoning Lab @ Imperial College London. It features redundancy reduction, Henikoff weighting, and BLOSUM-style log-odds scoring.  
+
 
 ---
 
@@ -67,22 +67,26 @@ please see docs above for details.
 
 ## Associated Publication
 
-This repository contains the BLOSUM matrix software developed for:
+This repository contains the BLOSUM matrix software developed for the following publication:
 
 Mosscrop, L. G.†, Gerardi, V.†, Kose, S. H., Talts, T., Thomas, C., Paschos, K., Brown, J., Williams, T. C., Skinner, M., Zambon, M., Bravi, B., & Tregoning, J. S.
 An integrated in silico and in vitro genotype-to-phenotype pipeline to predict and characterise RSV F site zero escape mutants. (2025, under review)
 
-Citation & Contributions
+## Citation 
 
 If you use this code or adapt components in your research, please cite:
 
-Kose, S. H. (2025). BISCOTTI: A Scalable Tool for Custom BLOSUM Matrix Construction. GitHub repository: https://github.com/kose-bioinfo/biscotti
+**Kose, S. H., Gerardi, V.,Bravi, B.,Tregoning, J.S (2025).** *BISCOTTI: A Scalable Tool for Custom BLOSUM Matrix Construction.* GitHub repository: [https://github.com/kose-bioinfo/biscotti](https://github.com/kose-bioinfo/biscotti)
 
-Acknowledgements:
+### Acknowledgements
 
-Thanks to Barbara Bravi for conceptual input and mathematical oversight, and Valeria Gerardi for data preparation and analysis.
+Special thanks to:  
 
-Other References
+- [Barbara Bravi](https://github.com/bbravi) – for conceptual guidance, and suggesting the log-odds scoring approach for BLOSUM matrices.  
+- Valeria Gerardi – for data preparation and analysis.
+
+
+## Other References
 
 Henikoff, S., & Henikoff, J. G. (1992). Amino acid substitution matrices from protein blocks. PNAS, 89(22), 10915–10919. PMID: 1438297
 
