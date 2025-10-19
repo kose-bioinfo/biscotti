@@ -19,6 +19,10 @@ BISCOTTI is a high-performance Python tool for generating custom substitution ma
 
 ## Documentation
 
+### Rationale
+
+BISCOTTI adapts the widely used Henikoff method for constructing BLOSUM-like matrices by incorporating weighted sequence contributions and custom scoring options. While Henikoff's original approach laid the foundation for position-specific residue weighting, this implementation extends it to handle large datasets efficiently and allows users to customize the scoring scheme, making it more flexible for diverse protein families.
+
 The full mathematical formulation (Henikoff weighting, pair counting, probability calculations, and log-odds scoring) is available on the MathJax-rendered site:
 
 **[View the Biscotti Substitution Matrix MathJax Page](https://kose-bioinfo.github.io/biscotti/)** 
