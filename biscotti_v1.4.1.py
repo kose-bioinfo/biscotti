@@ -22,7 +22,7 @@ AA_SET = set(AA_LIST)
 SCALE = 1
 PSEUDOCOUNT = 0.1             # pseudocount to avoid zeros
 ADD_MSA_SINGLETONS = True    # True => add singleton clusters for base IDs not in .clstr
-NPROC_DEFAULT = 6
+NPROC_DEFAULT = 4
 
 # =========================
 # Parsing & loading
@@ -245,10 +245,8 @@ def build_blosum_parallel(seq_by_key, clusters_keys, nproc=NPROC_DEFAULT):
     pair_counts = aggregate_pair_counts(pair_counts_list)
     return compute_log_odds_matrix(pair_counts)
 
-# =========================
-# Main
-# =========================
 
+# Main
 
 
 if __name__ == "__main__":
@@ -258,14 +256,15 @@ if __name__ == "__main__":
     parser.add_argument("--msa_file", required=True, help="Input MSA file")
     parser.add_argument("--clstr_file", required=True, help="Cluster file")
     parser.add_argument("--output_file", required=True, help="Output CSV file")
-    parser.add_argument("--nproc", type=int, required=True, help="Number of processes for parallel computation")
-
+    parser.add_argument("--nproc", type=int, required=False, help="Number of processes for parallel computation, default = 1")
+    parser.add_argument("--pseudocount", type=int, required=True, help=Input pseudocount to account for zero values)"
     args = parser.parse_args()
 
     msa_file = args.msa_file
     clstr_file = args.clstr_file
     output_file = args.output_file
     nproc = args.nproc
+    pseudocount = args.pseudocount
 
     print("Loading MSA (ALL instances)...")
     seq_by_key, id_to_keys = load_msa_instances(msa_file)
