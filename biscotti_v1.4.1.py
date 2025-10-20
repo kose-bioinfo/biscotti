@@ -257,7 +257,7 @@ if __name__ == "__main__":
     parser.add_argument("--clstr_file", required=True, help="Cluster file")
     parser.add_argument("--output_file", required=True, help="Output CSV file")
     parser.add_argument("--nproc", type=int, required=False, help="Number of processes for parallel computation, default = 1")
-    parser.add_argument("--pseudocount", type=int, required=True, help=Input pseudocount to account for zero values)"
+    parser.add_argument("--pseudocount", type=float, required=True, help="Input pseudocount to account for zero values")
     args = parser.parse_args()
 
     msa_file = args.msa_file
