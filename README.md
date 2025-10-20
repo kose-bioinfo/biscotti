@@ -73,7 +73,7 @@ python3 biscotti.py --msa_file MSA_FILE --clstr_file CLSTR_FILE --output_file OU
 
 ## Associated Publication
 
-This repository contains the BLOSUM matrix software developed for the following publication:
+This repository contains the biscotti algorithm and software developed for the following publication:
 
 Mosscrop, L. G.†, Gerardi, V.†, Kose, S. H., Talts, T., Thomas, C., Paschos, K., Brown, J., Williams, T. C., Skinner, M., Zambon, M., Bravi, B., & Tregoning, J. S.
 An integrated in silico and in vitro genotype-to-phenotype pipeline to predict and characterise RSV F site zero escape mutants. (2025, under review)
@@ -88,7 +88,7 @@ If you use this code or adapt components in your research, please cite:
 
 Special thanks to:  
 
-- Valeria Gerardi – for MSA alignments, data preparation and analysis.
+- Valeria Gerardi – for obtaining a mammoth number of RSV protein sequences and assisting with data preperation and analysis. 
 - [Barbara Bravi](https://github.com/bbravi) – for conceptual guidance, and suggesting the BLOSUM log-odds scoring approach.  
 
 
