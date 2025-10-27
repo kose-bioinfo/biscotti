@@ -14,9 +14,9 @@ from tqdm import tqdm
 import time
 import argparse
 
-# =========================
+
 # Config
-# =========================
+
 AA_LIST = list("ACDEFGHIKLMNPQRSTVWY")
 AA_SET = set(AA_LIST)
 SCALE = 1
@@ -24,9 +24,9 @@ PSEUDOCOUNT = 0.1             # pseudocount to avoid zeros
 ADD_MSA_SINGLETONS = True    # True => add singleton clusters for base IDs not in .clstr
 NPROC_DEFAULT = 4
 
-# =========================
+
 # Parsing & loading
-# =========================
+
 
 def parse_cd_hit_clstr_first_id(file_path: str):
     """
@@ -118,9 +118,9 @@ def add_missing_as_singletons(expanded_clusters, seq_by_key, id_to_keys, cluster
                 expanded_clusters.append([ukey])
     return expanded_clusters, sum(len(id_to_keys[b]) for b in missing_bases)
 
-# =========================
+
 # Henikoff weights & counts
-# =========================
+
 
 def henikoff_weights(seqs):
     n = len(seqs)
@@ -190,9 +190,9 @@ def aggregate_pair_counts(pair_counts_list):
             total[k] += v
     return total
 
-# =========================
+
 # Log-odds matrix
-# =========================
+
 
 def compute_log_odds_matrix(pair_counts):
     total_pairs = sum(pair_counts.values())
@@ -231,9 +231,9 @@ def compute_log_odds_matrix(pair_counts):
             matrix.at[a1, a2] = matrix.at[a2, a1] = lod
     return matrix
 
-# =========================
+
 # Parallel build
-# =========================
+
 
 def build_blosum_parallel(seq_by_key, clusters_keys, nproc=NPROC_DEFAULT):
     pair_counts_list = []
