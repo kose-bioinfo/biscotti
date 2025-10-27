@@ -17,7 +17,6 @@
   </span>
 </p>
 
-[Tregoning Lab](https://www.imperial.ac.uk/infectious-disease/research/immunology-infection/mucosal-infection-and-immunity/)
 
 ## Overview
 
