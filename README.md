@@ -13,11 +13,11 @@
 <p float="left">
   <img src="https://github.com/user-attachments/assets/b33c76f0-0ae7-41b0-aaf4-2ffb58b28be1" alt="italian-cantuccini-biscotti-stacked" width="50" style="float:left; margin-right:15px;">
   <span>
-    <strong>BISCOTTI</strong> is a high-performance Python tool for generating custom substitution matrices from large-scale multiple sequence alignments (&gt;30k sequences). This tool was in collaboration with the **Tregoning Lab (https://profiles.imperial.ac.uk/john.tregoning)**. It features redundancy reduction, Henikoff weighting, and BLOSUM-style log-odds scoring.
+    <strong>BISCOTTI</strong> is a high-performance Python tool for generating custom substitution matrices from large-scale multiple sequence alignments (&gt;30k sequences). It features redundancy reduction, Henikoff weighting, and BLOSUM-style log-odds scoring.
   </span>
 </p>
 
-
+[Tregoning Lab](https://www.imperial.ac.uk/infectious-disease/research/immunology-infection/mucosal-infection-and-immunity/)
 
 ## Overview
 
@@ -37,7 +37,7 @@ BISCOTTI adapts the widely used **[Henikoff method](https://pmc.ncbi.nlm.nih.gov
 
 The full mathematical formulation (Henikoff weighting, pair counting, probability calculations, and log-odds scoring) is available on the MathJax-rendered site:
 
-**[View the Biscotti Substitution Matrix MathJax Page](https://kose-bioinfo.github.io/biscotti/)** 
+**[Biscotti Substitution Matrix MathJax Page](https://kose-bioinfo.github.io/biscotti/)** 
 
 This page provides a complete explanation of the equations and their derivations with properly formatted LaTeX.
 
@@ -68,7 +68,8 @@ python3 biscotti.py --msa_file MSA_FILE --clstr_file CLSTR_FILE --output_file OU
 
 ```foo.csv ```
 
-**NOTE*: Although BISCOTTI is optimised for efficiency, its performance scales with the number of available CPU cores, with more cores yielding faster computation.
+> [!NOTE]
+>Although BISCOTTI is optimised for efficiency, its performance scales with the number of available CPU cores, with more cores yielding faster computation.
 
 
 ## Associated Publication
@@ -86,11 +87,7 @@ If you use this code or adapt components in your research, please cite:
 
 ### Acknowledgements
 
-Special thanks to:  
-
-- Valeria Gerardi – for obtaining a mammoth number of RSV protein sequences and assisting with data preperation and analysis. 
-- [Barbara Bravi](https://github.com/bbravi) – for conceptual guidance, and suggesting the BLOSUM log-odds scoring approach.  
-
+BISCOTTI was developed in collaboration with the [Tregoning Lab](https://www.imperial.ac.uk/infectious-disease/research/immunology-infection/mucosal-infection-and-immunity/). I would particularly like to acknowledge the valuable methodological discussions with [Barbara Bravi](https://gitlab.com/bbravi) during the design of the approach, and the important contributions of Valeria Gerardi in generating and processing the sequence datasets that supported development of the tool.
 
 
 ## Other References
