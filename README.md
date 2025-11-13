@@ -82,7 +82,7 @@ An integrated in silico and in vitro genotype-to-phenotype pipeline to predict a
 
 If you use this tool or adapt components in your research, please cite:
 
-**Kose, S. H. (2025).** *BISCOTTI: A Scalable Tool for Custom BLOSUM Matrix Construction.* GitHub repository: [https://github.com/kose-bioinfo/biscotti](https://github.com/kose-bioinfo/biscotti)
+**Kose, S. H. (2025).** *BISCOTTI: A Scalable Tool for Custom BLOSUM Matrix Generation.* GitHub repository: [https://github.com/kose-bioinfo/biscotti](https://github.com/kose-bioinfo/biscotti)
 
 ### Acknowledgements
 
