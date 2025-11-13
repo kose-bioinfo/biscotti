@@ -51,8 +51,7 @@ Filter and align your sequences using a tool like **MAFFT** or **CLUSTALW**.
 
 **Cluster Sequences**
 
-Cluster your FASTA sequences using **CD-HIT**. For highly conserved proteins, use ~90% identity cutoff:
-
+Cluster your FASTA sequences using **CD-HIT**. For highly conserved proteins, use a > identity cutoff: e.g.
 ```
 cd-hit -i RSV_A.fasta -o clustered_RSVA90.fasta -c 0.90 -n 5 -d 0
 ```
