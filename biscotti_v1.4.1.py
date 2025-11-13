@@ -29,14 +29,7 @@ NPROC_DEFAULT = 4
 
 
 def parse_cd_hit_clstr_first_id(file_path: str):
-    """
-    Parse CD-HIT .clstr:
-      - start new cluster at '>Cluster'
-      - for member lines, take the first ID after the first '>'
-      - strip trailing '...' if present
-      - de-duplicate IDs within cluster
-    Returns: list[list[str]] of base IDs
-    """
+  
     clusters, cur = [], []
     with open(file_path, "r", encoding="utf-8") as f:
         for line in f:
@@ -60,13 +53,6 @@ def parse_cd_hit_clstr_first_id(file_path: str):
 
 
 def load_msa_instances(fasta_path: str):
-    """
-    Load EVERY FASTA record (each '>' line).
-    Assigns unique keys for duplicate base IDs (e.g. ID, ID_1, ID_2).
-    Returns:
-      seq_by_key: dict {unique_key -> sequence}
-      id_to_keys: dict {base_id    -> [unique_key1, unique_key2, ...]}
-    """
     seq_by_key = {}
     id_to_keys = defaultdict(list)
     seen = defaultdict(int)
@@ -85,9 +71,7 @@ def load_msa_instances(fasta_path: str):
 
 
 def expand_clusters_with_instances(clusters_base_ids, id_to_keys, msa_keys_set=None):
-    """
-    Expand clusters (base IDs) to include ALL duplicate instances (unique keys).
-    """
+    
     expanded = []
     for cl in clusters_base_ids:
         members = []
@@ -103,9 +87,7 @@ def expand_clusters_with_instances(clusters_base_ids, id_to_keys, msa_keys_set=N
 
 
 def add_missing_as_singletons(expanded_clusters, seq_by_key, id_to_keys, clusters_base_ids):
-    """
-    Add singleton clusters for base IDs present in MSA but not in clusters.
-    """
+ 
     clustered_bases = set(b for cl in clusters_base_ids for b in cl)
     all_bases = set(id_to_keys.keys())
     missing_bases = sorted(all_bases - clustered_bases)
@@ -234,7 +216,6 @@ def compute_log_odds_matrix(pair_counts):
 
 # Parallel build
 
-
 def build_blosum_parallel(seq_by_key, clusters_keys, nproc=NPROC_DEFAULT):
     pair_counts_list = []
     with mp.Pool(nproc) as pool:
@@ -247,7 +228,6 @@ def build_blosum_parallel(seq_by_key, clusters_keys, nproc=NPROC_DEFAULT):
 
 
 # Main
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Build a BLOSUM matrix from MSA and clusters")
