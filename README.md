@@ -80,14 +80,13 @@ An integrated in silico and in vitro genotype-to-phenotype pipeline to predict a
 
 ## Citation 
 
-If you use this code or adapt components in your research, please cite:
+If you use this tool or adapt components in your research, please cite:
 
 **Kose, S. H. (2025).** *BISCOTTI: A Scalable Tool for Custom BLOSUM Matrix Construction.* GitHub repository: [https://github.com/kose-bioinfo/biscotti](https://github.com/kose-bioinfo/biscotti)
 
 ### Acknowledgements
 
-BISCOTTI was developed in collaboration with the [Tregoning Lab](https://www.imperial.ac.uk/infectious-disease/research/immunology-infection/mucosal-infection-and-immunity/). I would particularly like to acknowledge the valuable methodological discussions with [Barbara Bravi](https://gitlab.com/bbravi) during the design of the approach, and the important contributions of Valeria Gerardi in generating and processing the sequence datasets that supported development of the tool.
-
+BISCOTTI was developed in collaboration with the [Tregoning Lab](https://www.imperial.ac.uk/infectious-disease/research/immunology-infection/mucosal-infection-and-immunity/). With special thanks to Valeria Gerardi, [Barbara Bravi](https://gitlab.com/bbravi) and John Tregoning for their expertise and help in supporting the implementation of this tool. 
 
 ## Other References
 
