@@ -67,7 +67,7 @@ python3 biscotti.py --msa_file MSA_FILE --clstr_file CLSTR_FILE --output_file OU
 ```foo.csv ```
 
 > [!NOTE]
->Although BISCOTTI is optimised for efficiency, its performance scales with the number of available CPU cores, with more cores yielding faster computation - default = 4
+>Although BISCOTTI is optimised for efficiency, its performance scales with the number of available CPU cores, with more cores yielding faster computation, default = 4
 
 
 ## Associated Publication
