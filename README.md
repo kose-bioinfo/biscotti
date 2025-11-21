@@ -85,7 +85,7 @@ If you use this code or adapt components in your research, please cite:
 
 ### Acknowledgements
 
-BISCOTTI was developed for and in collaboration with the [Tregoning Lab](https://www.imperial.ac.uk/infectious-disease/research/immunology-infection/mucosal-infection-and-immunity/). With special thanks to Valeria Gerardi, [Barbara Bravi](https://gitlab.com/bbravi) and John Tregoning for their expertise and help in supporting the implementation of this tool. 
+BISCOTTI was developed for and in collaboration with the [Tregoning Lab](https://www.imperial.ac.uk/infectious-disease/research/immunology-infection/mucosal-infection-and-immunity/). With special thanks to Valeria Gerardi, [Barbara Bravi](https://gitlab.com/bbravi) and John Tregoning for their help and support in the implementation of this tool. 
 
 ## Other References
 
