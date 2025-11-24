@@ -38,7 +38,7 @@ The full mathematical formulation (Henikoff weighting, pair counting, probabilit
 
 **[Biscotti Substitution Matrix MathJax Page](https://kose-bioinfo.github.io/biscotti/)** 
 
-This page provides a complete explanation of the equations and their derivations with properly formatted LaTeX.
+This page provides a complete explanation of the equations and their derivations.
 
 ---
 
