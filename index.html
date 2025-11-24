@@ -44,7 +44,7 @@
 
 <h2>1. Henikoff Sequence Weighting</h2>
 
-<p>To correct for unequal sequence representation while preserving overall diversity, <strong>Henikoff sequence weights</strong> are applied. For each sequence \(i\), the weight is:</p>
+<p>To correct for unequal sequence representation while preserving overall diversity, Henikoff sequence weights are applied. For each sequence \(i\), the weight is:</p>
 
 $$
 w_i = \sum_p \frac{1}{r_p \cdot n_{a,p}}
@@ -63,7 +63,7 @@ $$
 
 <h2>2. Weighted Amino Acid Pair Counting</h2>
 
-<p>For each cluster of sequences, <strong>weighted amino acid pair counts</strong> are collected across alignment positions:</p>
+<p>For each cluster of sequences, weighted amino acid pair counts are collected across alignment positions:</p>
 
 $$
 C(aa_1, aa_2)^+ =
@@ -85,7 +85,7 @@ $$
 
 <h2>3. Observed and Expected Probabilities</h2>
 
-<p>The <strong>observed probability</strong> of aligning amino acids \(\alpha_1\) and \(\alpha_2\) is:</p>
+<p>The observed probability of aligning amino acids \(\alpha_1\) and \(\alpha_2\) is:</p>
 
 $$
 P_\text{obs}(\alpha_1, \alpha_2) = C_\text{total}(\alpha_1, \alpha_2) + \alpha
@@ -93,7 +93,7 @@ $$
 
 <p>where \(\alpha = 0.1\) is a pseudocount to avoid zero probabilities.</p>
 
-<p>The <strong>expected probability</strong> under the assumption of independent amino acid occurrence is:</p>
+<p>The expected probability under the assumption of independent amino acid occurrence is:</p>
 
 $$
 P_\text{exp}(\alpha_1, \alpha_2) =
@@ -107,7 +107,7 @@ $$
 
 <h2>4. Log-Odds Substitution Scores</h2>
 
-<p>Finally, substitution scores are computed as <strong>log-odds ratios</strong>:</p>
+<p>Finally, substitution scores are computed as log-odds ratios:</p>
 
 $$
 S(\alpha_1, \alpha_2) = \log_2 \frac{P_\text{obs}(\alpha_1, \alpha_2)}{P_\text{exp}(\alpha_1, \alpha_2)}
@@ -126,8 +126,8 @@ $$
 <h2>Summary</h2>
 
 <p>
-Biscotti takes aligned sequences, applies <strong>Henikoff weighting</strong> to correct for overrepresentation, 
-counts weighted amino acid pairs, and computes <strong>log-odds substitution scores</strong> with pseudocounts.
+Biscotti takes aligned sequences, applies Henikoff weighting to correct for overrepresentation, 
+counts weighted amino acid pairs, and computes log-odds substitution scores with pseudocounts.
 The output is a robust substitution matrix suitable for downstream bioinformatics analyses.
 </p>
 
