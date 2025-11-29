@@ -1,4 +1,4 @@
-# BISCOTTI — Crunching Alignments into Perfect BLOSUM Matrices
+# BISCOTTI:  Crunching Alignments into Perfect BLOSUM Matrices
 
 <!-- Badges -->
 [![Release](https://img.shields.io/github/v/release/kose-bioinfo/biscotti?style=flat-square)](https://github.com/kose-bioinfo/biscotti/releases)
