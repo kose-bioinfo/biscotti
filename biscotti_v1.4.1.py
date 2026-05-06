@@ -1,5 +1,5 @@
 # BISCOTTI: Crunching Alignments into Perfect BLOSUM Matrices
-# Copyright (C) 2025 S.H.Kose
+# Copyright (C) 2025 S.H.Kose (https://github.com/kose-bioinfo/biscotti)
 # Licensed under the GNU General Public License v3.0
 # See LICENSE file for details
 
