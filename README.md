@@ -3,7 +3,7 @@
 <!-- Badges -->
 [![Release](https://img.shields.io/github/v/release/kose-bioinfo/biscotti?style=flat-square)](https://github.com/kose-bioinfo/biscotti/releases)
 [![Language](https://img.shields.io/badge/language-Python-yellow?style=flat-square)]()
-[![License](https://img.shields.io/github/license/kose-bioinfo/biscotti?style=flat-square)](LICENSE)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Code Style](https://img.shields.io/badge/code%20style-black-black?style=flat-square)]()
 [![MathJax Docs](https://img.shields.io/badge/View%20MathJax%20Docs-Click%20Here-blue?style=flat-square)](https://kose-bioinfo.github.io/biscotti/)
 
