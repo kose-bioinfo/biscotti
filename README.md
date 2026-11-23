@@ -6,7 +6,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Code Style](https://img.shields.io/badge/code%20style-black-black?style=flat-square)]()
 [![MathJax Docs](https://img.shields.io/badge/View%20MathJax%20Docs-Click%20Here-blue?style=flat-square)](https://kose-bioinfo.github.io/biscotti/)
-
+[![DOI](https://zenodo.org/badge/1025587707.svg)](https://doi.org/10.5281/zenodo.24474529)
 ---
 
 <!-- Left-aligned logo with intro text -->
